@@ -1,0 +1,65 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MediTrack</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand-row" id="brand-row">
+        <div class="brand" id="brand"><a href="/dashboard">+ MediTrack</a></div>
+      </div>
+      <div class="profile">
+        <div class="avatar"><svg width="84" height="84"><circle cx="42" cy="42" r="40" fill="#fff"/></svg></div>
+        <div class="username">Name</div>
+        <div class="account">Account</div>
+      </div>
+      <nav class="menu" id="menu">
+        <a href="/dashboard" class="menu-item {% if active=='dashboard' %}active{% endif %}" data-target="dashboard">
+          <span class="icon">{% include 'icons/overview.svg' %}</span><span class="label">Overview</span>
+        </a>
+        <a href="/inventory" class="menu-item {% if active=='inventory' %}active{% endif %}" data-target="inventory">
+          <span class="icon">{% include 'icons/inventory.svg' %}</span><span class="label">Inventory</span>
+        </a>
+        <a href="/low-stock" class="menu-item {% if active=='low' %}active{% endif %}" data-target="low">
+          <span class="icon">{% include 'icons/low.svg' %}</span><span class="label">Low Stock</span>
+        </a>
+        <a href="/expiring" class="menu-item {% if active=='expiring' %}active{% endif %}" data-target="expiring">
+          <span class="icon">{% include 'icons/expiring.svg' %}</span><span class="label">Expiring</span>
+        </a>
+        <a href="/account" class="menu-item {% if active=='account' %}active{% endif %}" data-target="account">
+          <span class="icon">{% include 'icons/account.svg' %}</span><span class="label">Account</span>
+        </a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        {% if show_search %}
+        <div class="search">
+          <form id="search-form" action="/inventory" method="get" onsubmit="return false;">
+            <input id="search-input" name="q" placeholder="Search" />
+            <button id="search-btn" type="button">🔍</button>
+          </form>
+        </div>
+        {% else %}
+        <div></div>
+        {% endif %}
+        <div class="right-actions"></div>
+      </header>
+
+      <div class="page-content">
+        {% block content %}{% endblock %}
+      </div>
+
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

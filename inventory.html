@@ -1,0 +1,31 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<section id="inventory-page">
+  <h2>Inventory</h2>
+  <button id="add-item-btn" class="primary">+ Add Item</button>
+  <div class="table-wrap">
+    <table id="inventory-table"><thead>
+      <tr><th>ID</th><th>Name</th><th>Stock</th><th>DOM</th><th>DOE</th><th>Bar Code</th><th>Actions</th></tr>
+    </thead><tbody></tbody></table>
+  </div>
+
+  <!-- modal -->
+  <div id="item-modal" class="modal hidden">
+    <div class="modal-content">
+      <h3 id="modal-title">Add Item</h3>
+      <label>Name <input id="item-name"></label>
+      <label>Barcode <input id="item-barcode"></label>
+      <label>Stock <input id="item-stock" type="number"></label>
+      <label>DOM <input id="item-dom" type="date"></label>
+      <label>DOE <input id="item-doe" type="date"></label>
+      <label>Low threshold <input id="item-threshold" type="number" value="5"></label>
+      <label>Expires On <input id="item-expires" type="date"></label>
+      <div class="modal-actions">
+        <button id="save-item" class="primary">Save</button>
+        <button id="cancel-item">Cancel</button>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

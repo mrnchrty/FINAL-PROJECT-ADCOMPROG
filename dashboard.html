@@ -1,0 +1,23 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<section id="dashboard-page">
+  <h2>Dashboard Overview</h2>
+  <div class="stat-row">
+    <div class="stat card clickable" data-target="/inventory" onclick="location.href='/inventory'">Total Supplies <div class="stat-num" id="total-supply">0</div></div>
+    <div class="stat card clickable" data-target="/low-stock" onclick="location.href='/low-stock'">Low Stock <div class="stat-num" id="low-stock-count">0</div></div>
+    <div class="stat card clickable" data-target="/expiring" onclick="location.href='/expiring'">Expiring this Month <div class="stat-num" id="expiring-count">0</div></div>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Most Used Item</h3>
+      <div class="chart-wrap"><canvas id="mostUsedChart"></canvas></div>
+    </div>
+    <div class="card">
+      <h3>Expiring this month</h3>
+      <div class="chart-wrap"><canvas id="expiringChart"></canvas></div>
+    </div>
+  </div>
+</section>
+{% endblock %}
